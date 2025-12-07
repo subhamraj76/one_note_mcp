@@ -1,0 +1,81 @@
+//@ts-check
+'use strict';
+
+const path = require('path');
+
+/** @type {import('webpack').Configuration} */
+const extensionConfig = {
+  target: 'node',
+  mode: 'none',
+  entry: './src/extension.ts',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'extension.js',
+    libraryTarget: 'commonjs2'
+  },
+  externals: {
+    vscode: 'commonjs vscode',
+    // Native modules - must be external for proper loading
+    '@azure/msal-node-extensions': 'commonjs @azure/msal-node-extensions',
+    'keytar': 'commonjs keytar'
+  },
+  resolve: {
+    extensions: ['.ts', '.js']
+  },
+  module: {
+    rules: [
+      {
+        test: /\.ts$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'ts-loader'
+          }
+        ]
+      }
+    ]
+  },
+  devtool: 'nosources-source-map',
+  infrastructureLogging: {
+    level: 'log'
+  }
+};
+
+/** @type {import('webpack').Configuration} */
+const serverConfig = {
+  target: 'node',
+  mode: 'none',
+  entry: './src/server/index.ts',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'server.js',
+    libraryTarget: 'commonjs2'
+  },
+  externals: {
+    // Native modules - must be external for proper loading
+    '@azure/msal-node-extensions': 'commonjs @azure/msal-node-extensions',
+    'keytar': 'commonjs keytar'
+  },
+  resolve: {
+    extensions: ['.ts', '.js']
+  },
+  module: {
+    rules: [
+      {
+        test: /\.ts$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'ts-loader'
+          }
+        ]
+      }
+    ]
+  },
+  devtool: 'nosources-source-map',
+  infrastructureLogging: {
+    level: 'log'
+  }
+};
+
+module.exports = [extensionConfig, serverConfig];

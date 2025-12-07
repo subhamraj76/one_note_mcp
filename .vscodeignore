@@ -1,0 +1,42 @@
+# Source files
+src/**
+*.ts
+
+# Config files
+tsconfig.json
+webpack.config.js
+.eslintrc*
+eslint.config.*
+
+# Dev dependencies and tools
+node_modules/**
+.vscode/**
+.vscode-test/**
+
+# Git
+.git/**
+.gitignore
+
+# Documentation source (keep README.md)
+CONTRIBUTING.md
+CHANGELOG.md
+
+# Test files
+**/*.test.ts
+**/*.spec.ts
+**/test/**
+**/tests/**
+
+# Build artifacts we don't need
+out/**
+*.map
+
+# GitHub
+.github/**
+
+# Misc
+*.vsix
+.DS_Store
+Thumbs.db
+*.log
+npm-debug.log*
