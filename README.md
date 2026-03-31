@@ -734,3 +734,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Model Context Protocol SDK](https://github.com/modelcontextprotocol/sdk)
 - [Microsoft Graph API](https://docs.microsoft.com/graph/)
 - [MSAL Node](https://github.com/AzureAD/microsoft-authentication-library-for-js)
+# one_note_mcp
